@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon --watch src src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node index.js"
   },
@@ -16,6 +17,8 @@
   "devDependencies": {
     "@tsconfig/node21": "^21.0.3",
     "@types/node": "^20.12.2",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   }
 }
