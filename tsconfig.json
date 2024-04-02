@@ -1,0 +1,1 @@
+{ "extends": "@tsconfig/node21/tsconfig.json" }
