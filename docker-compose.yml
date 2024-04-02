@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  infrafy-api:
+    build:
+      context: .
+    container_name: infrafy-api
+    ports:
+      - "8080:8080"
