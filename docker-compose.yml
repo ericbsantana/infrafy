@@ -1,9 +1,36 @@
 version: "3.7"
 
 services:
+  postgres:
+    image: postgres:16.2-alpine3.19
+    container_name: infrafy-postgres
+    environment:
+      POSTGRES_USER: kiwi
+      POSTGRES_PASSWORD: kiwi
+      POSTGRES_DB: infrafy
+    ports:
+      - "5432:5432"
+    networks:
+      - infrafy
+    volumes:
+      - "postgres_data:/var/lib/postgresql/data"
+
   infrafy-api:
     build:
       context: .
     container_name: infrafy-api
     ports:
       - "8080:8080"
+    environment:
+      - DATABASE_URL=postgresql://kiwi:kiwi@postgres:5432/infrafy
+    depends_on:
+      - postgres
+    networks:
+      - infrafy
+
+networks:
+  infrafy:
+    driver: bridge
+
+volumes:
+  postgres_data:

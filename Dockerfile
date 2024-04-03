@@ -25,11 +25,14 @@ FROM node:21-alpine AS deploy
 
 WORKDIR /app
 
-RUN npm i -g pnpm
+RUN npm i -g pnpm prisma
 
 COPY --from=build /app/build ./build
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/prisma ./prisma
+
+RUN pnpm prisma generate 
 
 EXPOSE 8080
 
