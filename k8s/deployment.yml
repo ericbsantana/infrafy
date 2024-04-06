@@ -1,12 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: infrafy-deployment
   labels:
     app: infrafy
   namespace: infrafy
-
 spec:
   replicas: 5
   selector:
@@ -19,7 +17,7 @@ spec:
     spec:
       containers:
         - name: infrafy
-          image: ericbsantana/infrafy:bf83722
+          image: ericbsantana/infrafy:d059268
           env:
             - name: PORT
               valueFrom:
