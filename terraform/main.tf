@@ -13,4 +13,13 @@ resource "aws_db_instance" "infrafy-postgres-db-instance" {
   password                 = var.postgres_password
   apply_immediately        = true
   multi_az                 = false
+  parameter_group_name     = aws_db_parameter_group.default.name
+}
+
+resource "aws_db_parameter_group" "default" {
+  family = "postgres16"
+  parameter {
+    name  = "rds.force_ssl"
+    value = "0"
+  }
 }
