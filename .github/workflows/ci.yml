@@ -34,3 +34,13 @@ jobs:
           docker push ericbsantana/infrafy:${{ steps.generated_sha.outputs.sha }}
           docker tag ericbsantana/infrafy:${{ steps.generated_sha.outputs.sha }} ericbsantana/infrafy:latest
           docker push ericbsantana/infrafy:latest
+
+      - name: Update image tag
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          branch: main
+          valueFile: "k8s/deployment.yml"
+          propertyPath: "spec.template.spec.containers[0].image"
+          value: "ericbsantana/infrafy:${{ steps.generated_sha.outputs.sha }}"
+          commitChange: true
+          message: "chore: update tag in k8s deployment"
