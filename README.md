@@ -66,7 +66,7 @@ postgres_db_name = "postgres-db-name"
 You can also customize the `terraform/variables.tf` and `terraform/main.tf` files to create dynamically this resource. This is probably the best approach for a production-ready application, but works if you want just to prototype something and spin up a database quickly. After this, run:
 
 ```bash
-cde terraform
+cd terraform
 terraform init
 terraform apply
 ```
