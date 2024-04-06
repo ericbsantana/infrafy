@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: infrafy
-          image: ericbsantana/infrafy:ff16170
+          image: ericbsantana/infrafy:ab540fc
           env:
             - name: PORT
               valueFrom:
